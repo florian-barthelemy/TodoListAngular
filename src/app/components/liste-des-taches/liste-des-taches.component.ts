@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tache } from '../../models/Tache';
 import { DetailsTacheComponent } from '../details-tache/details-tache.component';
-import { Statut } from '../../models/Statut';
+import { TacheService } from '../../services/tache.service';
 
 @Component({
   selector: 'app-liste-des-taches',
@@ -10,12 +10,14 @@ import { Statut } from '../../models/Statut';
   templateUrl: './liste-des-taches.component.html',
   styleUrl: './liste-des-taches.component.css'
 })
-export class ListeDesTachesComponent {
+export class ListeDesTachesComponent implements OnInit{
+  taches !: Tache[];
+  constructor(private service:TacheService){
 
-  taches : Tache[] = [{
-    description : "tache de test",
-    libelle :"test",
-    statut : Statut.enCours
-  }];
+  }
+  ngOnInit(): void {
+    this.taches=this.service.getTasks();
+  }
+
 
 }
