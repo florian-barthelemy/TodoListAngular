@@ -3,3 +3,13 @@
     min-width: 400px;
     margin-top: 8px;
 }
+
+.full-width{
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}

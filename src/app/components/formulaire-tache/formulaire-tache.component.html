@@ -1,0 +1,29 @@
+<form [formGroup]="newTache" (submit)="addTache()">
+    <mat-form-field class="full-width">
+        <mat-label>Libellé</mat-label>
+        <input matInput formControlName="libelle">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Statut</mat-label>
+        <mat-select formControlName="statut">
+          @for (valeurStatut of valeursStatut; track valeurStatut) {
+            <mat-option [value]="valeurStatut">{{valeurStatut}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    @if (newTache.valid) {
+        <button mat-raised-button color="primary">Ajouter une tâche</button>
+    }
+    @else {
+        <div>
+            <p>le nom d'une tâche est obligatoire</p>
+            <p>la description d'une tâche est obligatoire</p>
+        </div>
+    }
+</form>

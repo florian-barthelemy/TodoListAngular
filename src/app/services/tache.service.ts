@@ -34,4 +34,8 @@ export class TacheService {
     this.tasks.push(tache);
    }
 
+   changeStatut (statut:Statut,index:number){
+    this.tasks[index].statut=statut;
+   }
+
 }

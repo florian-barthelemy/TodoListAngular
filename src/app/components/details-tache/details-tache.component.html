@@ -1,5 +1,5 @@
 <mat-card class="card-details" [ngStyle]="setBackgroundColor()">
-    <mat-card-header>
+    <mat-card-header class="flex">
         <mat-card-title>{{tache.libelle}}</mat-card-title>
         @if(tache.statut == "terminée"){
             <mat-icon>done</mat-icon>
@@ -17,8 +17,15 @@
         <p>
             {{tache.description}}
         </p> 
-        <p>
-            {{tache.statut}}
-        </p>
+        <mat-form-field class="full-width">
+            <mat-label>Statut</mat-label>
+            <mat-select (valueChange)="changeStatut($event)" [(value)]="tache.statut" >
+              @for (valeurStatut of valeursStatut; track valeurStatut) {
+                <mat-option  [value]="valeurStatut">{{valeurStatut}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
     </mat-card-content>
 </mat-card>
+
