@@ -38,4 +38,8 @@ export class TacheService {
     this.tasks[index].statut=statut;
    }
 
+   deleteTask(index:number){
+    this.tasks.splice(index,1);
+   }
+
 }

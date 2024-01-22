@@ -17,6 +17,7 @@ import { TacheService } from '../../services/tache.service';
 })
 export class DetailsTacheComponent {
 
+
   @Input()
   tache !: Tache;
 
@@ -63,4 +64,8 @@ export class DetailsTacheComponent {
     this.service.changeStatut(event,this.index);
 
   }
+
+  deleteTache() {
+    this.service.deleteTask(this.index);
+    }
 }
