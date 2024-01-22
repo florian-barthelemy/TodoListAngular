@@ -2,3 +2,50 @@
     display: flex;
     justify-content: center;
 }
+.button-row{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.blue{
+    color: blue;
+}
+
+.blue.selected{
+    color: white;
+    background-color: blue;
+}
+
+.green {
+    color: green;
+}
+
+.green.selected{
+    color: white;
+    background-color: green;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.yellow.selected{
+    color: black;
+    background-color: yellow;
+}
+
+.orange{
+    color: orange;
+}
+
+.orange.selected{
+    color: white;
+    background-color: orange;
+}
+
+button{
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+}

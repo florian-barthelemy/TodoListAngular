@@ -7,39 +7,63 @@ import { Statut } from '../models/Statut';
 })
 export class TacheService {
 
-  private tasks : Tache[] =[];
+  private tasks: Tache[] = [];
 
   constructor() {
     this.tasks.push({
-    description : "tache de test",
-    libelle :"test",
-    statut : Statut.enCours
+      description: "tache de test",
+      libelle: "test",
+      statut: Statut.enCours
     })
-   }
+  }
 
-   /**
-    * récupére le tableau des tâches
-    * @returns le tableau des tâches
-    */
-   getTasks() : Tache[]{
+  /**
+   * récupére le tableau des tâches
+   * @returns le tableau des tâches
+   */
+  getTasks(): Tache[] {
     return this.tasks;
-   }
+  }
 
-   /**
-    * permet d'ajouter une tâche dans notre liste
-    * @param tache tâche à ajouter
-    */
+  /**
+   * permet d'ajouter une tâche dans notre liste
+   * @param tache tâche à ajouter
+   */
 
-   addTask(tache:Tache){
+  addTask(tache: Tache) {
     this.tasks.push(tache);
-   }
+  }
 
-   changeStatut (statut:Statut,index:number){
-    this.tasks[index].statut=statut;
-   }
+  /**
+   * change le statut d'une tache de la liste
+   * @param statut nouveau statut
+   * @param index  position de l'item à changer
+   */
+  changeStatut(statut: Statut, index: number) {
+    this.tasks[index].statut = statut;
+  }
 
-   deleteTask(index:number){
-    this.tasks.splice(index,1);
-   }
+  /**
+   * supprime un élément de la taille par rapport à son index
+   * @param index position de l'élément à supprimer
+   */
+  deleteTask(index: number) {
+    this.tasks.splice(index, 1);
+  }
+
+  /**
+   * filtre les taches selon leur statut
+   * @param statut la valeur du statut à trouver
+   * @returns liste filtrée
+   */
+  getByStatut(statut: string): Tache[] {
+    let taskFilter: Tache[] = [];
+    this.tasks.forEach((task) => {
+      if (task.statut == statut) {
+        taskFilter.push(task);
+      }
+    })
+    return taskFilter;
+  }
 
 }

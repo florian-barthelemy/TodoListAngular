@@ -1,5 +1,11 @@
 <app-formulaire-tache></app-formulaire-tache>
 
+<div class="button-row">
+    <button  [class]="filter == 'Toutes'? 'blue selected':'blue'" (click)="refreshFilter('Toutes')">Toutes</button>
+    <button  [class]="filter == 'Terminées'? 'green selected':'green'" (click)="refreshFilter('Terminées')">Terminées</button>
+    <button [class]="filter == 'En cours'? 'orange selected':'orange'" (click)="refreshFilter('En cours')">En cours</button>
+    <button  [class]="filter == 'À venir'? 'yellow selected':'yellow'" (click)="refreshFilter('À venir')">À venir</button>
+  </div>
 @for (tache of taches; track $index) {
     <article class="details-tache">
         <app-details-tache [tache] = "tache" [index]="$index"> </app-details-tache>
