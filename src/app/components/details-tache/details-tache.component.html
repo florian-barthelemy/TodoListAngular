@@ -1,0 +1,24 @@
+<mat-card class="card-details" [ngStyle]="setBackgroundColor()">
+    <mat-card-header>
+        <mat-card-title>{{tache.libelle}}</mat-card-title>
+        @if(tache.statut == "terminée"){
+            <mat-icon>done</mat-icon>
+        }
+        @else if(tache.statut == "à venir"){
+            <mat-icon>access_time</mat-icon>
+        }
+
+        @else if(tache.statut == "en cours"){
+            <mat-icon>hourglass_full</mat-icon>
+        }
+
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            {{tache.description}}
+        </p> 
+        <p>
+            {{tache.statut}}
+        </p>
+    </mat-card-content>
+</mat-card>
