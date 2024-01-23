@@ -1,6 +1,14 @@
 <mat-card class="card-details" [ngStyle]="setBackgroundColor()">
     <mat-card-header class="flex">
+      @if(!editable){
         <mat-card-title>{{tache.libelle}}</mat-card-title>
+      }
+      @else(){
+        <mat-form-field class="full-width">
+          <mat-label>Libellé</mat-label>
+          <input matInput required [(ngModel)]="libelle"  (change)="checkError()" >
+        </mat-form-field>
+      }
         @if(tache.statut == "terminée"){
             <mat-icon>done</mat-icon>
         }
@@ -14,9 +22,18 @@
 
     </mat-card-header>
     <mat-card-content>
+      @if(!editable){
+
         <p>
-            {{tache.description}}
+          {{tache.description}}
         </p> 
+      }
+      @else {
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <input matInput required [(ngModel)]="description"  (change)="checkError()">
+        </mat-form-field>
+      }
         <mat-form-field class="full-width">
             <mat-label>Statut</mat-label>
             <mat-select (valueChange)="changeStatut($event)" [(value)]="tache.statut" >
@@ -26,10 +43,33 @@
             </mat-select>
           </mat-form-field>
 
-          <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteTache()">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="flex">
 
-    </mat-card-content>
+            <button mat-fab color="warn" aria-label="delete icon" (click)="deleteTache()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          @if(!editable){
+            <button mat-fab color="primary" aria-label="edit icon" (click)="setEditable()">
+              <mat-icon>create</mat-icon>
+            </button>  
+          }
+          @else {
+            <div class="container-button">
+              <button mat-fab color="primary" aria-label="cancel icon" (click)="setNonEditable()">
+                <mat-icon>cancel</mat-icon>
+              </button>
+              @if(error !=null){
+                <p class="error">{{error}}</p>
+              }
+              @else {
+                <button mat-fab color="primary" aria-label="save icon" (click)="saveTache()">
+                  <mat-icon>save</mat-icon>
+                </button>  
+              }
+               
+            </div>
+          }
+        </div>
+        </mat-card-content>
 </mat-card>
 

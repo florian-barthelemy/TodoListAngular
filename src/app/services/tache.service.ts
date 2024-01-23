@@ -39,7 +39,8 @@ export class TacheService {
    * @param statut nouveau statut
    * @param index  position de l'item à changer
    */
-  changeStatut(statut: Statut, index: number) {
+  changeStatut(statut: Statut, tache:Tache) {
+    let index= this.getIndex(tache)
     this.tasks[index].statut = statut;
   }
 
@@ -74,6 +75,18 @@ export class TacheService {
       }
     })
     return taskFilter;
+  }
+
+  /**
+   * permet de modifier la description et le libellé de la tache
+   * @param tache tache à modifier
+   * @param libelle nouveau libelle
+   * @param description nouvelle description
+   */
+  saveTask(tache :Tache, libelle:string, description :string){
+    let index = this.getIndex(tache);
+    this.tasks[index].description=description;
+    this.tasks[index].libelle=libelle;
   }
 
 }

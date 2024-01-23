@@ -13,3 +13,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+.container-button{
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+
+.error{
+    color: red;
+}
