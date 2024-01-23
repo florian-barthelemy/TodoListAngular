@@ -20,7 +20,7 @@ export class ListeDesTachesComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.taches = this.service.getTasks();
+   this.refreshListe();
   }
 
   /**

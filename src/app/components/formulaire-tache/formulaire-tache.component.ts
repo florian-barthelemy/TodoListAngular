@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TacheService } from '../../services/tache.service';
 import {MatInputModule} from '@angular/material/input';
@@ -18,6 +18,9 @@ export class FormulaireTacheComponent {
   newTache!:FormGroup;
   valeursStatut = Object.values(Statut);
 
+  @Output()
+  refreshList : EventEmitter<any> = new EventEmitter();
+
   constructor(private service:TacheService) {
     this.newTache = new FormGroup({
       //définir chaque contrôle d'attributs
@@ -30,5 +33,6 @@ export class FormulaireTacheComponent {
   addTache(){
     this.service.addTask(this.newTache.value);
     this.newTache.reset();
+    this.refreshList.emit();
   }
 }

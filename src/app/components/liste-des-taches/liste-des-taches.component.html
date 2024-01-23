@@ -1,4 +1,4 @@
-<app-formulaire-tache></app-formulaire-tache>
+<app-formulaire-tache (refreshList)="refreshListe()"></app-formulaire-tache>
 
 <div class="button-row">
     <button  [class]="filter == 'Toutes'? 'blue selected':'blue'" (click)="refreshFilter('Toutes')">Toutes</button>
@@ -8,6 +8,6 @@
   </div>
 @for (tache of taches; track $index) {
     <article class="details-tache">
-        <app-details-tache [tache] = "tache" [index]="$index"> </app-details-tache>
+        <app-details-tache [tache] = "tache" (refreshList)="refreshListe()" [index]="$index"> </app-details-tache>
     </article>
 }

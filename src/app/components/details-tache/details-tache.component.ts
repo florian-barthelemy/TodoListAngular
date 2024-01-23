@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tache } from '../../models/Tache';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +23,9 @@ export class DetailsTacheComponent {
 
   @Input()
   index !: number;
+
+  @Output()
+  refreshList : EventEmitter<any> = new EventEmitter();
 
   valeursStatut = Object.values(Statut);
 
@@ -64,8 +67,11 @@ export class DetailsTacheComponent {
     this.service.changeStatut(event,this.index);
 
   }
-
+  /**
+   * permet de supprimer la tâche
+   */
   deleteTache() {
-    this.service.deleteTask(this.index);
+    this.service.deleteTask(this.tache);
+    this.refreshList.emit();
     }
 }

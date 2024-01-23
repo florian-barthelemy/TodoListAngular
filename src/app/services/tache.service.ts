@@ -44,11 +44,21 @@ export class TacheService {
   }
 
   /**
-   * supprime un élément de la taille par rapport à son index
+   * supprime un élément de la liste
    * @param index position de l'élément à supprimer
    */
-  deleteTask(index: number) {
+  deleteTask(element: Tache) {
+    let index= this.getIndex(element);
     this.tasks.splice(index, 1);
+  }
+
+  /**
+   * permet de récupérer l'index d'un élément
+   * @param element element à trouver
+   * @returns index de l'élément
+   */
+  getIndex(element :Tache) :number{
+    return this.tasks.indexOf(element);
   }
 
   /**
